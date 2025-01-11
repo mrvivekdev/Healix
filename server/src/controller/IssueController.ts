@@ -6,6 +6,15 @@ import { PayloadType } from '../utils/TypesAll.js'
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 
+/**
+ * Handles medical requests and generates AI health advice
+ * 
+ * Flow:
+ * 1. Validate params
+ * 2. Get history/metrics
+ * 3. Generate AI response
+ * 4. Handle errors
+ */
 async function NormalIssueHandler(req: CustomRequest, res: Response): Promise<any> {
     const {
         Symptoms,
@@ -142,24 +151,3 @@ async function NormalIssueHandler(req: CustomRequest, res: Response): Promise<an
 export { NormalIssueHandler }
 
 
-
- // console.log(`
-    // ================= Health Data =================
-    // Symptoms       : ${Symptoms}
-    // Temperature    : ${Temperature}
-    // Blood Pressure : ${BloodPressure}
-    // Pulse Rate     : ${PulseRate}
-    // Allergies      : ${Allergies}
-    // Triggers       : ${Triggers}
-    // Location       : ${Location}
-    // Diabetes       : ${Diabetes ? "Yes" : "No"}
-    // Duration       : ${Duration}
-    // Cold/Flu       : ${ColdAndFlu}
-    // Headaches      : ${Headaches}
-    // Stomach Issues : ${StomachIssues}
-    // Skin Issues    : ${SkinIssues}
-    // Sleep          : ${Sleep}
-    // Diet           : ${Diet}
-    // Prompt         : ${Prompt}
-    // ================================================
-    // `);
