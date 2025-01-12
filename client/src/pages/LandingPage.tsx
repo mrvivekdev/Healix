@@ -1,16 +1,28 @@
 import { useGSAP } from '@gsap/react'
 import { useRef } from 'react'
 import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 import doctorImage from '../assets/doctorImage.png'
 import LandingPageNav from '../component/LandingPageNavBar'
 import Fotter from '../component/Fotter'
+import googleImage from '../assets/search.png'
+import geminiImage from '../assets/google-gemini-icon.png'
 
 export default function Landing(){
 
     const DoctorImageRef = useRef(null)
+    const SolutionRef = useRef(null)
+    const GoogleRef = useRef(null)
+    const GeminiRef = useRef(null)
 
     useGSAP(()=>{
+        gsap.registerPlugin(ScrollTrigger);
+
         const Element = DoctorImageRef.current
+        const Solution = SolutionRef.current
+        const Google = GoogleRef.current
+        const Gemini = GeminiRef.current
 
         gsap.from(Element, {
             y: 100,              
@@ -19,6 +31,43 @@ export default function Landing(){
             opacity: 0,          
             duration: 1.5,       
             ease: 'power2.out', 
+        })
+
+        gsap.from(Solution, {              
+            scale: 0.8,     
+            opacity: 0,          
+            duration: 1,    
+            ease: 'power2.out', 
+            scrollTrigger: {
+                trigger: Solution,
+                start: 'top 95%',
+            }
+        })
+
+        gsap.from(Google, {  
+            x: -100,            
+            scale: 0,     
+            opacity: 0,          
+            duration: 1,
+            delay: 0.5,   
+            ease: 'power2.out', 
+            scrollTrigger: {
+                trigger: Solution,
+                start: 'top 40%',
+            }
+        })
+
+        gsap.from(Gemini, {  
+            x: 100,            
+            scale: 0,     
+            opacity: 0,          
+            duration: 1,
+            delay: 0.5,    
+            ease: 'power2.out', 
+            scrollTrigger: {
+                trigger: Solution,
+                start: 'top 40%',
+            }
         })
     })
 
@@ -55,11 +104,16 @@ export default function Landing(){
                 </div>
 
                 {/* PageThree */}
-                <div className='h-screen w-screen bg-white flex justify-center items-center'>
-                    <div className='border-2 rounded p-6 h-3/4 w-3/4 flex flex-col justify-center tiems-center'>
-                        <h1 className='text-5xl font-extrabold text-center lg:text-8xl font-sans'>Health Solution For <h1 className='bg-gradient-to-r from-purple-400 to-blue-500 text-transparent bg-clip-text'>1.4 Billion</h1> Pepole In The Wold</h1>
+                <div className='h-screen w-screen bg-white flex flex-col justify-center items-center'>
+                    <div className='p-6 h-3/4 w-3/3 lg:w-3/4 flex flex-col justify-center tiems-center'>
+                        <h1 className='text-5xl font-extrabold text-center lg:text-8xl font-sans'>Health Solution For <h1 className='bg-gradient-to-r from-purple-400 to-blue-500 text-transparent bg-clip-text' ref={SolutionRef} >1.4 Billion</h1> Pepole In The Wold</h1>
+
+                        <span className='mt-16 w-full text-center font-semibold' ><h1 className='font-extrabold text-xl' >AI by Google Gemini</h1> Powered by the advanced Google Gemini Flash-2.5 model, Healix delivers intelligent, AI-driven health solutions. With its cutting-edge natural language understanding and precision, Gemini enables real-time, accurate, and personalized health insights, making Healix your trusted companion for smarter healthcare decisions.</span>
+                        <div className='flex flex-row justify-center items-center m-10 lg:mt-16 lg:mb-0'>
+                            <img src={googleImage} alt="" className='h-16 mr-2' ref={GoogleRef}/>
+                            <img src={geminiImage} alt="" className='h-16 ml-2' ref={GeminiRef}/>
+                        </div>
                     </div>
-        
                 </div>
 
                 <Fotter />

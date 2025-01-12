@@ -1,8 +1,16 @@
+import {Routes, Route} from 'react-router-dom'
+
 import Landing from "./pages/LandingPage";
+import Register from './pages/RegisterPage'
 
 function App() {
     return (<>
-        <Landing />
+        {/* <Landing /> */}
+        <Register />
+        
+        {/* <Routes>
+            <Route path="/" element={<Landing />} />
+        </Routes> */}
     </>)
 }
 
