@@ -13,6 +13,7 @@
     "@gsap/react": "^2.1.1",
     "autoprefixer": "^10.4.20",
     "axios": "^1.7.9",
+    "formik": "^2.4.6",
     "formix": "^0.0.1",
     "gsap": "^3.12.5",
     "postcss": "^8.4.49",
@@ -22,7 +23,8 @@
     "react-loader-spinner": "^6.1.6",
     "react-router-dom": "^7.1.1",
     "tailwindcss": "^3.4.17",
-    "yarn": "^1.22.22"
+    "yarn": "^1.22.22",
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",

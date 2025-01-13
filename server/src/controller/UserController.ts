@@ -52,6 +52,7 @@ export async function HandelCreateUser(req: Request, res: Response): Promise<any
         payload = {
             status: "success",
             message: "UserCreated",
+            transport: "LoginPage",
             user: userCreate
         }
         return res.status(200).json(payload);
