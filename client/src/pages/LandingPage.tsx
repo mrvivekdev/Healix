@@ -1,5 +1,5 @@
 import { useGSAP } from '@gsap/react'
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -70,6 +70,10 @@ export default function Landing(){
             }
         })
     })
+
+    useEffect(()=>{
+        document.title = "Healix Ai Health Assistant"
+    }, [])
 
     return (
         <>

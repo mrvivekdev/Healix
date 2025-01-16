@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 import {useFormik} from 'formik'
 import axios, { AxiosResponse } from 'axios'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
 
 export default function Register(){
@@ -49,6 +49,10 @@ export default function Register(){
             await RegisterApiCall(values);
         }
     });
+
+    useEffect(()=>{
+        document.title = "Register - Healix"
+    }, [])
 
     return(
         <>
@@ -204,7 +208,7 @@ export default function Register(){
                 </div>
 
                 <div className="flex flex-col items-center">
-                    <h1 className="select-none m-0 hidden lg:flex bg-gradient-to-r from-purple-400 to-blue-500 text-transparent bg-clip-text text-[300px] font-extrabold" >Hello</h1>
+                    <h1 className="select-none m-0 hidden lg:flex bg-gradient-to-r from-purple-400 to-blue-500 text-transparent bg-clip-text text-[250px] font-extrabold" >Register</h1>
                     <h1 className="select-none m-0 hidden lg:flex bg-gradient-to-r from-purple-400 to-blue-500 text-transparent bg-clip-text text-[300px] font-extrabold" >Healix</h1>
                 </div>
             </div>

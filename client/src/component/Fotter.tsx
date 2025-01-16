@@ -19,7 +19,7 @@ export default function Footer(): JSX.Element {
                             <li><a href="#home" className="hover:text-white">Home</a></li>
                             <li><a href="#about" className="hover:text-white">About Us</a></li>
                             <li><a href="#services" className="hover:text-white">Services</a></li>
-                            <li><a href="#contact" className="hover:text-white">Contact</a></li>
+                            <li><a href="#contact" className="hover:text-white">Terms And Condicon</a></li>
                         </ul>
                     </div>
 
