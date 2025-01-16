@@ -1,3 +1,5 @@
+import {Link} from "react-router-dom";
+
 export default function Footer(): JSX.Element {
     return (
         <footer className="bg-purple-950 text-white py-8">
@@ -16,10 +18,10 @@ export default function Footer(): JSX.Element {
                     <div className="mb-6 md:mb-0 md:w-1/3 flex justify-center items-center flex-col">
                         <h2 className="text-2xl font-bold mb-2">Quick Links</h2>
                         <ul className="space-y-2 text-sm text-gray-300">
-                            <li><a href="#home" className="hover:text-white">Home</a></li>
-                            <li><a href="#about" className="hover:text-white">About Us</a></li>
-                            <li><a href="#services" className="hover:text-white">Services</a></li>
-                            <li><a href="#contact" className="hover:text-white">Terms And Condicon</a></li>
+                            <li><Link to="/" className="hover:text-white">Home</Link></li>
+                            <li><Link to="/about" className="hover:text-white">About Us</Link></li>
+                            <li><Link to="/services" className="hover:text-white">Services</Link></li>
+                            <li><Link to="/Terms" className="hover:text-white">Terms And Condicon</Link></li>
                         </ul>
                     </div>
 
@@ -27,8 +29,8 @@ export default function Footer(): JSX.Element {
                     <div className="md:w-1/3  flex justify-center items-center flex-col">
                         <h2 className="text-2xl font-bold mb-2">Get in Touch</h2>
                         <p className="text-sm text-gray-300">
-                            Email: <a href="mailto:support@healix.com" className="hover:text-white">vivekkathrotiya911@gmail.com</a><br />
-                            Phone: <a href="tel:+1234567890" className="hover:text-white">+91 99131 42703</a>
+                            Email: <Link to="mailto:support@healix.com" className="hover:text-white">vivekkathrotiya911@gmail.com</Link><br />
+                            Phone: <Link to="tel:+1234567890" className="hover:text-white">+91 99131 42703</Link>
                         </p>
                     </div>
                 </div>

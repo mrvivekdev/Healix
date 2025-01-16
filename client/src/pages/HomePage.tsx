@@ -2,12 +2,15 @@ import HomeNavBar from '../component/HomePageNavBar'
 import Fotter from '../component/Fotter'
 import Basic from '../component/BasicAsk'
 import { useGSAP } from '@gsap/react'
-import { useContext, useRef } from 'react'
+import { useContext, useEffect, useRef } from 'react'
 import gsap from 'gsap'
+import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../utils/GenrealContext';
 
 export default function Home(){
-    const {user} = useContext<any>(AppContext);
+    const navigate = useNavigate();
+
+    const {user, cookie} = useContext<any>(AppContext);
 
     const HealixAni = useRef(null);
     const AiAni = useRef(null);
@@ -31,6 +34,14 @@ export default function Home(){
             duration: 1.5,       
             ease: 'power2.out', 
         })
+    })
+
+    useEffect(()=>{
+        document.title = "Healix - Ai Health Assistant"
+
+        if(user && cookie){
+            navigate('/');
+        }
     })
 
     return(

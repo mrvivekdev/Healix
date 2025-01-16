@@ -1,15 +1,20 @@
 import { useGSAP } from '@gsap/react'
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useContext } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useNavigate } from 'react-router-dom';
 
 import doctorImage from '../assets/doctorImage.png'
 import LandingPageNav from '../component/LandingPageNavBar'
 import Fotter from '../component/Fotter'
 import googleImage from '../assets/search.png'
 import geminiImage from '../assets/google-gemini-icon.png'
+import { AppContext } from '../utils/GenrealContext';
 
 export default function Landing(){
+    const navigate = useNavigate();
+
+    const {user, cookie} = useContext<any>(AppContext);
 
     const DoctorImageRef = useRef(null)
     const SolutionRef = useRef(null)
@@ -25,9 +30,8 @@ export default function Landing(){
         const Gemini = GeminiRef.current
 
         gsap.from(Element, {
-            y: 100,              
-            scale: 0.8,          
-            rotation: 25,        
+            y: 200,              
+            scale: 0.8,       
             opacity: 0,          
             duration: 1.5,       
             ease: 'power2.out', 
@@ -73,7 +77,11 @@ export default function Landing(){
 
     useEffect(()=>{
         document.title = "Healix Ai Health Assistant"
-    }, [])
+
+        if(user && cookie){
+            navigate('/Home');
+        }
+    });
 
     return (
         <>
