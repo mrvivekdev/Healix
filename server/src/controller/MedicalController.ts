@@ -89,7 +89,7 @@ async function getMedicalHistory(req: CustomRequest, res: Response): Promise<any
 // - Handles duplicate records and validation errors
 // - Returns appropriate status codes (201, 400, 409, 500)
 async function getHealthMetrics(req: CustomRequest, res: Response): Promise<any> {
-    const { date, weight, height, bloodPressure, heartRate, userID } = req.body;
+    const { date, weight, height, bloodPressure, heartRate} = req.body;
 
     let payload: PayloadType = {
         status: "pending",
@@ -108,7 +108,7 @@ async function getHealthMetrics(req: CustomRequest, res: Response): Promise<any>
 
     try {
         const MetricsData = await healthMetrics.create({
-            user: userID,
+            user: req.user._id,
             date,
             weight,
             height,
