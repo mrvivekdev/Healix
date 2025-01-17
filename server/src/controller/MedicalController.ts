@@ -15,7 +15,7 @@ import { PayloadType } from '../utils/TypesAll.js'
 //    - 409: Record already exists
 //    - 500: Server error
 async function getMedicalHistory(req: CustomRequest, res: Response): Promise<any> {
-    const { condition, diagnosisDate, medications, treatments, doctorNotes, userID } = req.body;
+    const { condition, diagnosisDate, medications, treatments, doctorNotes} = req.body;
     
     let payload: PayloadType = {
       status: "pending",
@@ -39,7 +39,7 @@ async function getMedicalHistory(req: CustomRequest, res: Response): Promise<any
             medications,
             treatments,
             doctorNotes,
-            user: userID
+            user: req.user._id
         })
 
         payload = {

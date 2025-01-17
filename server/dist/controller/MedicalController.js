@@ -9,7 +9,7 @@ import healthMetrics from '../models/HealthMetricsModel.js';
 //    - 409: Record already exists
 //    - 500: Server error
 async function getMedicalHistory(req, res) {
-    const { condition, diagnosisDate, medications, treatments, doctorNotes, userID } = req.body;
+    const { condition, diagnosisDate, medications, treatments, doctorNotes } = req.body;
     let payload = {
         status: "pending",
         message: "ReqIsInPending",
@@ -30,7 +30,7 @@ async function getMedicalHistory(req, res) {
             medications,
             treatments,
             doctorNotes,
-            user: userID
+            user: req.user._id
         });
         payload = {
             status: "success",

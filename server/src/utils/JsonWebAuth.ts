@@ -6,7 +6,7 @@ export async function GenerateToken(UserData: any) {
     }
 
     let JWTpayload = {
-        id: UserData._id,
+        _id: UserData._id,
         email: UserData.email,
         firstname: UserData.firstName,
         lastname: UserData.lastName,

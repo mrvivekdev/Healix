@@ -3,8 +3,12 @@ import {useFormik} from 'formik'
 import axios, { AxiosResponse } from 'axios'
 import { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast, Bounce } from 'react-toastify';
 
 export default function Register(){
+    const navigate = useNavigate();
+    
     const [data, setData] = useState<AxiosResponse | null>(null);
 
     const YupSchema = yup.object({
@@ -24,11 +28,22 @@ export default function Register(){
             setData(PostCall);
         
             if(data?.data.transport === "LoginPage" && data?.data?.status === "success"){
-                console.log('Form submitted successfully:', data);
+                toast.success("Registration Successful! Redirecting to login...", {
+                    position: "top-right",
+                    autoClose: 3000,
+                });
+                navigate('/Login'); 
                 resetForm();
             }
 
-        } catch (error) {
+        } catch (error: any) {
+            toast.error(
+                error.response?.data?.message || "Server error occurred during registration.",
+                    {
+                        position: "top-right", // Use string for position
+                        autoClose: 5000,
+                    }
+            );
             console.error('Error during registration:', error);
         }    
     }
@@ -199,6 +214,20 @@ export default function Register(){
                         )}
 
                         <button type='submit' className="border border-black rounded-lg text-l px-2 py-2 w-2/5 lg:w-1/6 lg:px-5 lg:py-2 font-bold hover:bg-black hover:text-white hover:scale-110 transition ease-in-out delay-200">Sing up</button>
+                        <ToastContainer 
+                            position="top-right"
+                            autoClose={5000}
+                            hideProgressBar={false}
+                            newestOnTop={false}
+                            closeOnClick={false}
+                            rtl={false}
+                            pauseOnFocusLoss
+                            draggable
+                            pauseOnHover
+                            theme="light"
+                            transition={Bounce}
+                        />
+
 
                         <span className="text-gray-600 mt-4">
                             Already have an account? 

@@ -6,8 +6,12 @@ import { useState } from 'react';
 import {Link} from 'react-router-dom';
 import { useContext, useEffect } from 'react';
 import { AppContext } from '../utils/GenrealContext';
+import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast, Bounce } from 'react-toastify';
 
 export default function Login(){
+    const navigate = useNavigate();
+
     const {setCookie, setUser} = useContext<any>(AppContext);
 
     const [data, setData] = useState<AxiosResponse | null>(null);
@@ -24,13 +28,25 @@ export default function Login(){
             setData(PostCall);
         
             if(data?.data?.status === "success"){
+                toast.success("Registration Successful! Redirecting to login...", {
+                    position: "top-right",
+                    autoClose: 3000,
+                });
                 Coookie.set("uid", data?.data.cookie);
                 setCookie(data?.data.cookie);
                 setUser(data?.data.user);
+                navigate('/Home');
                 resetForm();
             }
 
-        } catch (error) {
+        } catch (error: any) {
+            toast.error(
+                error.response?.data?.message || "Server error occurred during registration.",
+                    {
+                        position: "top-right", // Use string for position
+                        autoClose: 5000,
+                    }
+            );
             console.error('Error during registration:', error);
         }    
     }
@@ -115,7 +131,7 @@ export default function Login(){
                             />
                             <label htmlFor="terms" className="text-sm text-gray-600">
                                 I agree to the{' '}
-                                <Link to="/terms" className="text-blue-500 hover:underline">
+                                <Link to="/Terms" className="text-blue-500 hover:underline">
                                     Terms and Conditions
                                 </Link>
                             </label>
@@ -127,6 +143,19 @@ export default function Login(){
                         )}
 
                         <button type='submit' className="border border-black rounded-lg text-l px-2 py-2 w-2/5 lg:w-1/6 lg:px-5 lg:py-2 font-bold hover:bg-black hover:text-white hover:scale-110 transition ease-in-out delay-200">Login</button>
+                        <ToastContainer 
+                            position="top-right"
+                            autoClose={5000}
+                            hideProgressBar={false}
+                            newestOnTop={false}
+                            closeOnClick={false}
+                            rtl={false}
+                            pauseOnFocusLoss
+                            draggable
+                            pauseOnHover
+                            theme="light"
+                            transition={Bounce}
+                        />
 
                         <span className="text-gray-600 mt-4">
                             Don't have an account? 
