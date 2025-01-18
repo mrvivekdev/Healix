@@ -7,7 +7,7 @@ import Landing from "./pages/LandingPage";
 import Register from './pages/RegisterPage'
 import Login from './pages/LoginPage'
 import Home from './pages/HomePage'
-import  TermsAndConditions from './pages/TermsPage'
+import TermsAndConditions from './pages/TermsPage'
 import History from './pages/HistoryPage'
 import Matrics from './pages/MatricsPage'
 
@@ -25,16 +25,17 @@ function App() {
         {/* <Login /> */}
         {/* <Home /> */}
         {/* <History /> */}
-        <Matrics />
+        {/* <Matrics /> */}
         
-        {/* <Routes>
+        <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/Register" element={<Register />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/Home" element={<Home />} />
             <Route path="/Terms" element={<TermsAndConditions />} />
             <Route path="/History" element={<History />} />
-        </Routes> */}
+            <Route path="/Matrics" element={<Matrics />} />
+        </Routes>
     </>)
 }
 

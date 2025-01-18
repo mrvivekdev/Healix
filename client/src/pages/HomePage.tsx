@@ -38,11 +38,13 @@ export default function Home(){
 
     useEffect(()=>{
         document.title = "Healix - Ai Health Assistant"
-
-        if(user && cookie){
+        
+        if(!user || !cookie){
             navigate('/');
         }
     })
+
+    
 
     return(
         <>

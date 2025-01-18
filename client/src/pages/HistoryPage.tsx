@@ -66,6 +66,10 @@ export default function History(): JSX.Element{
         document.title = "History - Healix"
     }, [])
 
+    if(!cookie){
+        navigate('/Login');
+    }
+
     return(
         <>
             <div className="h-screen w-screen bg-purple-950 p-6 lg:p-10 flex flex-row">

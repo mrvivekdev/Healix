@@ -1,22 +1,32 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { FaRegUser } from "react-icons/fa6";
 import { LiaFileMedicalAltSolid } from "react-icons/lia";
 import { RiFolderHistoryLine } from "react-icons/ri";
 import { RiHome3Line } from "react-icons/ri";
+import {useNavigate} from "react-router-dom"
+import Cookie from "js-cookie"
+import { AppContext } from '../utils/GenrealContext';
 
 export default function HomeNavBar(){
-
+    const {setCookie} = useContext<any>(AppContext);
+    const navigate = useNavigate();
     const [openUser, setOpenUser] = useState<boolean>(false);
+
+    async function cookieRemove(){
+        setCookie(null)
+        Cookie.remove("uid")
+        navigate("/")
+    }
 
     return(
         <>
             <div className="h-16 lg:h-20 border-b border-black w-screen flex justify-between items-center">
-                <h1 className="font-extrabold text-2xl lg:text-4xl ml-10 bg-gradient-to-r from-purple-400 to-blue-500 text-transparent bg-clip-text cursor-pointer">Healix</h1>
+                <h1 onClick={() => navigate("/Home")} className="font-extrabold text-2xl lg:text-4xl ml-10 bg-gradient-to-r from-purple-400 to-blue-500 text-transparent bg-clip-text cursor-pointer">Healix</h1>
 
                 <div className="flex justify-center items-center">
 
                     <div className="flex justify-center items-center">
-                        <button className="lg:mr-5 lg:ml-2 hidden lg:flex hover:scale-110 transition ease-in-out delay-200">
+                        <button onClick={() => navigate("/Home")} className="lg:mr-5 lg:ml-2 hidden lg:flex hover:scale-110 transition ease-in-out delay-200">
                             <RiHome3Line style={{ fontSize: '30px' }}/>
                         </button>
 
@@ -24,7 +34,7 @@ export default function HomeNavBar(){
                             <RiFolderHistoryLine style={{ fontSize: '30px' }}/>
                         </button>
 
-                        <button className="lg:mr-2 lg:ml-2 hover:scale-110 transition ease-in-out delay-200">
+                        <button onClick={() => navigate("/History")} className="lg:mr-2 lg:ml-2 hover:scale-110 transition ease-in-out delay-200">
                             <LiaFileMedicalAltSolid style={{ fontSize: '30px' }}/>
                         </button>
                     </div>
@@ -48,7 +58,7 @@ export default function HomeNavBar(){
                                     <li className="p-1 hover:bg-gray-700 cursor-pointer">
                                         <button>Setting</button>
                                     </li>
-                                    <li className="p-1 hover:bg-gray-700 cursor-pointer text-red-500">
+                                    <li onClick={cookieRemove} className="p-1 hover:bg-gray-700 cursor-pointer text-red-500">
                                         <button>Logout</button>
                                     </li>
                                     <li className="p-1 hover:bg-gray-700 cursor-pointer lg:hidden">

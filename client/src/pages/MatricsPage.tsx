@@ -31,7 +31,7 @@ export default function Matrics(): JSX.Element{
                     position: "top-right",
                     autoClose: 3000,
                 });
-                navigate('/Matrics'); 
+                navigate('/Home'); 
                 resetForm();
             }
 
@@ -65,6 +65,10 @@ export default function Matrics(): JSX.Element{
     useEffect(()=>{
         document.title = "History - Healix"
     }, [])
+
+    if(!cookie){
+        navigate('/Login');
+    }
 
     return(
         <>
