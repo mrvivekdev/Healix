@@ -10,6 +10,7 @@ import Home from './pages/HomePage'
 import TermsAndConditions from './pages/TermsPage'
 import History from './pages/HistoryPage'
 import Matrics from './pages/MatricsPage'
+import NormalIssue from './pages/NormalIssueForm'
 
 function App() {
     const {setCookie} = useContext<any>(AppContext);
@@ -26,8 +27,9 @@ function App() {
         {/* <Home /> */}
         {/* <History /> */}
         {/* <Matrics /> */}
+        <NormalIssue />
         
-        <Routes>
+        {/* <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/Register" element={<Register />} />
             <Route path="/Login" element={<Login />} />
@@ -35,7 +37,7 @@ function App() {
             <Route path="/Terms" element={<TermsAndConditions />} />
             <Route path="/History" element={<History />} />
             <Route path="/Matrics" element={<Matrics />} />
-        </Routes>
+        </Routes> */}
     </>)
 }
 
